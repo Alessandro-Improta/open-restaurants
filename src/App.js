@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import DateTimePicker from 'react-datetime-picker';
+import { useEffect, useState } from 'react';
+import parsedData from './parsedData';
+
 
 function App() {
+  const [ filteredList, setFilteredList ] = useState([...parsedData]);
+  const [ selectedDate, setSelectedDate ] = useState(new Date());
+
+  useEffect(() => {
+    console.log(selectedDate);
+    console.log(typeof selectedDate.getDay());
+    console.log(typeof selectedDate.getHours());
+    console.log(typeof selectedDate.getMinutes());
+
+
+
+  }, [selectedDate])
+
+  console.log(parsedData);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <DateTimePicker onChange={setSelectedDate} value={selectedDate} />
+      {}
+    </>
   );
 }
 
